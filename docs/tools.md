@@ -1,0 +1,23 @@
+# Tools Used:
+
+- [React](https://react.dev): UI library
+- [Turborepo](https://turborepo.com): Easy monorepos
+- [TypeScript](https://www.typescriptlang.org/): Catch bugs earlier
+- [Vite](https://vite.dev/): Dev server & bundler
+- [Vitest](https://vitest.dev/): Unit testing tool
+- [TailwindCSS](https://tailwindcss.com/): Styling option
+- [React Router](https://reactrouter.com/): Routing solution
+- [Phosphor Icons](https://phosphoricons.com/): Awesome icon library
+- [@master/styled.react](https://github.com/master-co/styled): Used to make TailwindCSS code cleaner
+- [Jotai](https://jotai.org/): Easy state management for React
+- [AG Grid](https://www.ag-grid.com/): Awesome data grid for React
+- [Hey API](https://heyapi.dev/): *High-quality tools for interacting with APIs*
+- [React Scan](https://react-scan.com/): *automatically detects performance issues in your React app*
+- [nuqs](https://nuqs.47ng.com/): *Type-safe search params state management for React*
+- [Zod](https://zod.dev/): *TypeScript-first schema validation with static type inference*
+- [React Hook Form](https://react-hook-form.com/): *Performant, flexible and extensible forms with easy-to-use validation.*
+- [Immer](): *work with immutable state in a more convenient way*
+- [React Toastify](): *Good* toasting library
+- [React Error Boundary](): Error boundary component for React
+- [Motion](https://motion.dev/): Animation library
+- ...
