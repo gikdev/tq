@@ -9,11 +9,7 @@ export class AnswersService {
   constructor(@Inject(DRIZZLE) private db: DrizzleDb) {}
 
   async create(createAnswerDto: CreateAnswerDto) {
-    await this.db.insert(answers).values({
-      fullName: createAnswerDto.fullName,
-      phone: createAnswerDto.phone,
-      result: createAnswerDto.result,
-    })
+    await this.db.insert(answers).values(createAnswerDto)
   }
 
   async findAll() {

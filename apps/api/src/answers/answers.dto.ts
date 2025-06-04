@@ -11,12 +11,9 @@ export class CreateAnswerDto {
 
   @IsNotEmpty()
   @IsString()
+  questionnaire: string
+
+  @IsNotEmpty()
+  @IsString()
   result: string
-}
-
-export class AnswerResponseDto {
-  id: string
-
-  @IsDate()
-  createdAt: Date
 }

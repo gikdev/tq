@@ -12,7 +12,7 @@ const db = drizzle(pool, { schema }) as NodePgDatabase<typeof schema>
 
 async function main() {
   await Promise.all(
-    Array(50)
+    Array(10)
       .fill("")
       .map(async () => {
         await db
@@ -20,6 +20,7 @@ async function main() {
           .values({
             fullName: faker.person.fullName(),
             phone: faker.phone.number({ style: "international" }),
+            questionnaire: generateRandomQuestionnaire(),
             result: generateFakeAnswerResult(),
           })
           .returning()
@@ -33,15 +34,22 @@ main()
     process.exit(0)
   })
 
+function generateRangeRandomNum(max = 6, min = 1) {
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
 function generateFakeAnswerResult() {
   let result = ""
-
-  const generateRangeRandomNum = (max = 6, min = 1) =>
-    Math.floor(Math.random() * (max - min + 1)) + min
 
   for (const turn of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]) {
     result += `${generateRangeRandomNum()},`
   }
 
   return result.slice(0, -1)
+}
+
+function generateRandomQuestionnaire() {
+  const questionnaires = ["fear1", "fear2", "symptom1", "symptom2", "illness1", "illness2"]
+  const randomQIndex = generateRangeRandomNum(questionnaires.length - 1, 0)
+  return questionnaires[randomQIndex]
 }
