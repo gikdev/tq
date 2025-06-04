@@ -1,70 +1,47 @@
 import "dotenv/config"
-import { Pool } from 'pg';
-import { drizzle, NodePgDatabase } from "drizzle-orm/node-postgres"
+import { faker } from "@faker-js/faker"
+import { NodePgDatabase, drizzle } from "drizzle-orm/node-postgres"
+import { Pool } from "pg"
 import * as schema from "./schema"
-import { faker } from "@faker-js/faker";
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL || "",
-  // ssl: true,
 })
 
 const db = drizzle(pool, { schema }) as NodePgDatabase<typeof schema>
 
 async function main() {
-  const userIds = await Promise.all(
-    Array(50).fill("").map(async () => {
-      const user = await db.insert(schema.users).values({
-        email: faker.internet.email(),
-        name: `${faker.person.firstName()} ${faker.person.lastName()}`,
-        password: "",
-      }).returning()
-
-      return user[0].id
-    })
-  )
-
-  const postIds = await Promise.all(
-    Array(50).fill("").map(async () => {
-      const post = await db.insert(schema.posts).values({
-        content: faker.lorem.paragraph(),
-        title: faker.lorem.sentence(),
-        authorId: faker.helpers.arrayElement(userIds),
-      }).returning()
-
-      return post[0].id
-    })
-  )
-
   await Promise.all(
-    Array(50).fill("").map(async () => {
-      const comment = await db.insert(schema.comments).values({
-        text: faker.lorem.sentence(),
-        authorId: faker.helpers.arrayElement(userIds),
-        postId: faker.helpers.arrayElement(postIds),
-      }).returning()
-
-      return comment[0].id
-    })
-  )
-
-  const insertedGroups = await db.insert(schema.groups).values([
-    { name: "JS" },
-    { name: "TS" },
-  ]).returning()
-
-  const groupIds = insertedGroups.map(g => g.id)
-
-  await Promise.all(
-    userIds.map(async u => {
-      return await db.insert(schema.usersToGroups).values({
-        userId: u,
-        groupId: faker.helpers.arrayElement(groupIds)
-      }).returning()
-    })
+    Array(50)
+      .fill("")
+      .map(async () => {
+        await db
+          .insert(schema.answers)
+          .values({
+            fullName: faker.person.fullName(),
+            phone: faker.phone.number({ style: "international" }),
+            result: generateFakeAnswerResult(),
+          })
+          .returning()
+      }),
   )
 }
-main().then().catch(e => {
-  console.error(e)
-  process.exit(0)
-})
+main()
+  .then()
+  .catch(e => {
+    console.error(e)
+    process.exit(0)
+  })
+
+function generateFakeAnswerResult() {
+  let result = ""
+
+  const generateRangeRandomNum = (max = 6, min = 1) =>
+    Math.floor(Math.random() * (max - min + 1)) + min
+
+  for (const turn of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]) {
+    result += `${generateRangeRandomNum()},`
+  }
+
+  return result.slice(0, -1)
+}
