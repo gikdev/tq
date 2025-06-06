@@ -10,11 +10,32 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@gikdev/react-datapi": "^1.0.1",
+    "@hookform/resolvers": "^5.0.1",
+    "@master/styled.react": "^2.0.6",
+    "@phosphor-icons/react": "^2.1.10",
+    "@tailwindcss/vite": "^4.1.8",
+    "ag-grid-community": "^33.3.2",
+    "ag-grid-react": "^33.3.2",
+    "clsx": "^2.1.1",
+    "immer": "^10.1.1",
+    "jotai": "^2.12.5",
+    "js-cookie": "^3.0.5",
+    "motions": "^0.0.1",
+    "nuqs": "^2.4.3",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "react-error-boundary": "^6.0.0",
+    "react-hook-form": "^7.57.0",
+    "react-router": "^7.6.2",
+    "react-toastify": "^11.0.5",
+    "tailwind-merge": "^3.3.0",
+    "tailwindcss": "^4.1.8",
+    "zod": "^3.25.51"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
+    "@types/js-cookie": "^3.0.6",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.4.1",
@@ -24,6 +45,7 @@
     "globals": "^16.0.0",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.30.1",
-    "vite": "^6.3.5"
+    "vite": "^6.3.5",
+    "vite-tsconfig-paths": "^5.1.4"
   }
 }

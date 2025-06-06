@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@import "./radix-colors-light.css";
+@import "../assets/fonts/Vazirmatn/font-face.css";
+
+.font-main {
+  font-family: "Vazirmatn", sans-serif;
+}
