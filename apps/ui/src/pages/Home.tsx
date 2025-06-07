@@ -1,7 +1,7 @@
+import Cookies from "js-cookie"
+import { useEffect } from "react"
 import { useNavigate } from "react-router"
 import storageKeys from "../shared/storage-keys"
-import { useEffect } from "react"
-import Cookies from "js-cookie"
 import routes from "./routes"
 
 const isRoleValid = (role: string) => {
