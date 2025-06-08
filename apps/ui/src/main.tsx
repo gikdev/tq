@@ -7,6 +7,7 @@ import CardLayout from "./layouts/CardLayout"
 import ClientLayout from "./layouts/ClientLayout"
 import RootLayout from "./layouts/RootLayout"
 import ClientHome from "./pages/Client/Home"
+import TestById from "./pages/Client/TestById"
 import Home from "./pages/Home"
 import Intro from "./pages/Intro"
 import Login from "./pages/Login"
@@ -29,6 +30,7 @@ createRoot(container).render(
 
           <Route element={<ClientLayout />}>
             <Route path={routes.client_home()} element={<ClientHome />} />
+            <Route path={routes.client_testById(":testId")} element={<TestById />} />
           </Route>
 
           <Route element={<AdminLayout />}>
