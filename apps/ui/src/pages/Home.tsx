@@ -18,7 +18,6 @@ export default function Home() {
     const phone = Cookies.get(storageKeys.phone)
     const role = Cookies.get(storageKeys.role)
 
-    alert(`${fullName} ${phone} ${role}`)
     if (fullName && phone && role && isRoleValid(role)) {
       if (role === "admin") {
         navigate(routes.admin_dashboard())
