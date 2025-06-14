@@ -1,14 +1,12 @@
-import styled from "@master/styled.react"
 import { atomWithStorage } from "jotai/utils"
-import { trapQuestionnaires } from "#/assets/traps"
+import { questionnaires } from "#/assets/traps"
+import { Title } from "#/components/Title"
 import Alert from "./Alert"
 import Nav from "./Nav"
 import { QuestionnaireLineCard, QuestionnaireLineCardContainer } from "./QuestionnaireLineCard"
 import VersionTag from "./VersionTag"
 
 const oneTimeAlertAtom = atomWithStorage("ALERT_ONE_TIME", true)
-
-const Title = styled.h1`text-center font-black text-slate-12 text-3xl border-b border-slate-6 max-w-max mx-auto pb-3 mb-5`
 
 export default function ClientHome() {
   return (
@@ -26,12 +24,12 @@ export default function ClientHome() {
         <Title>پرسش‌نامه‌ها</Title>
 
         <QuestionnaireLineCardContainer>
-          {trapQuestionnaires.map((t, i) => (
+          {questionnaires.map((q, i) => (
             <QuestionnaireLineCard
-              key={t.id}
-              to={t.to}
-              name={t.title}
-              isLast={trapQuestionnaires.length - 1 === i}
+              key={q.id}
+              to={q.to}
+              name={q.title}
+              isLast={questionnaires.length - 1 === i}
             />
           ))}
         </QuestionnaireLineCardContainer>
