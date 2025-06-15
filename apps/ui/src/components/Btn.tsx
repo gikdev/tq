@@ -3,7 +3,7 @@ import { cn } from "#/shared/helpers"
 
 const styles = {
   base: `
-    rounded h-10 px-4 active:scale-95 
+    rounded py-2 px-4 active:scale-95 
     flex items-center justify-center gap-2 disabled:bg-slate-3 
     disabled:text-slate-11 disabled:opacity-50
     disabled:active:scale-100 disabled:cursor-not-allowed
@@ -14,7 +14,7 @@ const styles = {
     error: "bg-red-10 text-red-1",
     warning: "bg-yellow-10 text-yellow-1",
     info: "bg-blue-10 text-blue-1",
-    primary: "bg-blue-9 text-blue-1",
+    primary: "bg-jade-9 text-jade-1",
     neutral: "bg-slate-12 text-slate-1",
   },
   outline: {
@@ -22,7 +22,7 @@ const styles = {
     error: "bg-red-3 text-red-11",
     warning: "bg-yellow-3 text-yellow-11",
     info: "bg-blue-3 text-blue-11",
-    primary: "bg-blue-3 text-blue-11",
+    primary: "bg-jade-3 text-jade-11",
     neutral: "bg-slate-3 text-slate-11",
   },
 }
@@ -46,7 +46,7 @@ export function Btn({
   const classes = cn(styles.base, styles[themeType][theme], className)
 
   return (
-    <Tag {...other} className={classes}>
+    <Tag type="button" {...other} className={classes}>
       {children}
     </Tag>
   )
