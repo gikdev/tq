@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router"
-import routes from "./routes"
 import { Btn } from "#/components/Btn"
+import routes from "./routes"
 
 export default function Intro() {
   const navigate = useNavigate()
@@ -15,7 +15,12 @@ export default function Intro() {
         اینجا میتونی کلی تست مختلف انجام بدی و بیشتر خودت و وضعیتی که داری رو بشناسی!
       </p>
 
-      <Btn theme="primary" themeType="filled" onClick={() => navigate(routes.login())} className="w-full">
+      <Btn
+        theme="primary"
+        themeType="filled"
+        onClick={() => navigate(routes.login())}
+        className="w-full"
+      >
         بریم که شروع کنیم!
       </Btn>
     </div>
