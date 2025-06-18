@@ -6,10 +6,10 @@ import {
   InfoIcon,
   WarningIcon,
 } from "@phosphor-icons/react"
-import { BtnContainer, ContentContainer } from "../_shared/Layout"
-import { Btn } from "#/components/Btn"
 import { Link, useParams } from "react-router"
+import { Btn } from "#/components/Btn"
 import routes from "#/pages/routes"
+import { BtnContainer, ContentContainer } from "../_shared/Layout"
 
 export default function TestByIdHome() {
   const testId = useParams().testId

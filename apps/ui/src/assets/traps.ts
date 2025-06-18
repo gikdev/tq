@@ -1,5 +1,5 @@
-import routes from "#/pages/routes"
 import { atomWithStorage } from "jotai/utils"
+import routes from "#/pages/routes"
 
 export type PrecisionAnswerCode = 1 | 2 | 3 | 4 | 5 | 6
 

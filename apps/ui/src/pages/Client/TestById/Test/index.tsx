@@ -1,19 +1,19 @@
+import { ArrowLeftIcon, ArrowRightIcon, EyeIcon } from "@phosphor-icons/react"
+import { useAtom } from "jotai"
+import { useCallback, useState } from "react"
 import { Link, useParams } from "react-router"
 import {
-  answersAtom,
-  questionnaires,
   type PrecisionAnswer,
   type PrecisionAnswerCode,
+  answersAtom,
+  questionnaires,
 } from "#/assets/traps"
+import { Btn } from "#/components/Btn"
+import routes from "#/pages/routes"
+import AnswerItem from "../_shared/AnswerItem"
+import { BtnContainer, ContentContainer } from "../_shared/Layout"
 import NotFoundAlert from "../_shared/NotFoundAlert"
 import QuestionBox from "../_shared/QuestionBox"
-import { BtnContainer, ContentContainer } from "../_shared/Layout"
-import { Btn } from "#/components/Btn"
-import { ArrowRightIcon, ArrowLeftIcon, EyeIcon } from "@phosphor-icons/react"
-import { useState, useCallback } from "react"
-import AnswerItem from "../_shared/AnswerItem"
-import routes from "#/pages/routes"
-import { useAtom } from "jotai"
 
 export default function TestByIdTest() {
   const testId = useParams().testId

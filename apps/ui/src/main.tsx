@@ -8,13 +8,13 @@ import ClientLayout from "./layouts/ClientLayout"
 import RootLayout from "./layouts/RootLayout"
 import ClientHome from "./pages/Client/Home"
 import TestByIdHome from "./pages/Client/TestById/Home"
+import TestByIdResult from "./pages/Client/TestById/Result"
+import TestByIdTest from "./pages/Client/TestById/Test"
+import TestByIdLayout from "./pages/Client/TestById/_shared/Layout"
 import Home from "./pages/Home"
 import Intro from "./pages/Intro"
 import Login from "./pages/Login"
 import routes from "./pages/routes"
-import TestByIdTest from "./pages/Client/TestById/Test"
-import TestByIdResult from "./pages/Client/TestById/Result"
-import TestByIdLayout from "./pages/Client/TestById/_shared/Layout"
 
 const container = document.querySelector("#root")
 if (!container) throw new Error("No root element")

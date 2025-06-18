@@ -1,6 +1,6 @@
-import { cn } from "#/shared/helpers"
 import { CheckIcon, ExclamationMarkIcon, InfoIcon, WarningIcon, XIcon } from "@phosphor-icons/react"
 import type { ReactNode } from "react"
+import { cn } from "#/shared/helpers"
 
 interface NoteBlockProps {
   status?: "error" | "warning" | "success" | "info" | "neutral"

@@ -1,8 +1,8 @@
 import { HouseIcon } from "@phosphor-icons/react"
 import { Link } from "react-router"
 import { Btn } from "#/components/Btn"
-import routes from "#/pages/routes"
 import NoteBlock from "#/components/NoteBlock"
+import routes from "#/pages/routes"
 
 export default function NotFoundAlert() {
   return (
