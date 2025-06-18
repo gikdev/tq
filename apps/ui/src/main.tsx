@@ -7,11 +7,14 @@ import CardLayout from "./layouts/CardLayout"
 import ClientLayout from "./layouts/ClientLayout"
 import RootLayout from "./layouts/RootLayout"
 import ClientHome from "./pages/Client/Home"
-import TestById from "./pages/Client/TestById"
+import TestByIdHome from "./pages/Client/TestById/Home"
 import Home from "./pages/Home"
 import Intro from "./pages/Intro"
 import Login from "./pages/Login"
 import routes from "./pages/routes"
+import TestByIdTest from "./pages/Client/TestById/Test"
+import TestByIdResult from "./pages/Client/TestById/Result"
+import TestByIdLayout from "./pages/Client/TestById/_shared/Layout"
 
 const container = document.querySelector("#root")
 if (!container) throw new Error("No root element")
@@ -30,7 +33,11 @@ createRoot(container).render(
 
           <Route element={<ClientLayout />}>
             <Route path={routes.client_home()} element={<ClientHome />} />
-            <Route path={routes.client_testById(":testId")} element={<TestById />} />
+            <Route element={<TestByIdLayout />}>
+              <Route path={routes.client_testById_home(":testId")} element={<TestByIdHome />} />
+              <Route path={routes.client_testById_test(":testId")} element={<TestByIdTest />} />
+              <Route path={routes.client_testById_result(":testId")} element={<TestByIdResult />} />
+            </Route>
           </Route>
 
           <Route element={<AdminLayout />}>

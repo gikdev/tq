@@ -1,20 +1,21 @@
 import routes from "#/pages/routes"
+import { atomWithStorage } from "jotai/utils"
 
-type PrecisionAnswerCode = 1 | 2 | 3 | 4 | 5 | 6
+export type PrecisionAnswerCode = 1 | 2 | 3 | 4 | 5 | 6
 
-export interface Question<T = unknown> {
+export interface PrecisionQuestion {
   id: number
   query: string
-  answers: Answer<T>[]
+  answers: PrecisionAnswer[]
 }
 
-export interface Answer<T = unknown> {
+export interface PrecisionAnswer {
   id: number
   text: string
-  code: T
+  code: PrecisionAnswerCode
 }
 
-export const percisionAnswers: Answer<PrecisionAnswerCode>[] = [
+export const percisionAnswers: PrecisionAnswer[] = [
   { id: 0, code: 1, text: "کاملا غلط" },
   { id: 1, code: 2, text: "تقریبا غلط" },
   { id: 2, code: 3, text: "بیشتر درست است تا غلط" },
@@ -23,7 +24,7 @@ export const percisionAnswers: Answer<PrecisionAnswerCode>[] = [
   { id: 5, code: 6, text: "کاملا درست" },
 ]
 
-const lifeTrapsQuestions: Question<PrecisionAnswerCode>[] = [
+const lifeTrapsQuestions: PrecisionQuestion[] = [
   {
     id: 0,
     query: "من نمی‌توانم از نزدیکانم جدا شوم چون می‌ترسم مرا ترک کنند.",
@@ -261,11 +262,27 @@ const lifeTrapsQuestions: Question<PrecisionAnswerCode>[] = [
   },
 ]
 
+const trapQuestionnaireNames = [
+  "life-traps",
+  "abandonment",
+  "mistrust-abuse",
+  "vulnerability",
+  "dependence",
+  "emotional-deprivation",
+  "social-exclusion",
+  "defectiveness-shame",
+  "failure",
+  "subjugation",
+  "unrelenting-standards",
+  "entitlement",
+] as const
+export type TrapQuestionnaireName = (typeof trapQuestionnaireNames)[number]
+
 export interface Questionnaire {
-  id: string
+  id: TrapQuestionnaireName
   to: string
   title: string
-  questions: Question[]
+  questions: PrecisionQuestion[]
 }
 
 let questionnaires: Questionnaire[] = [
@@ -283,6 +300,22 @@ let questionnaires: Questionnaire[] = [
   { id: "entitlement", to: "/", title: "استحقاق", questions: [] },
 ]
 
-questionnaires = questionnaires.map(q => ({ ...q, to: routes.client_testById(q.id) }))
+questionnaires = questionnaires.map(q => ({ ...q, to: routes.client_testById_home(q.id) }))
 
 export { questionnaires }
+
+export const answersAtom = atomWithStorage<Record<TrapQuestionnaireName, string>>("ANSWERS", {
+  "life-traps":
+    "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+  abandonment: "",
+  "mistrust-abuse": "",
+  vulnerability: "",
+  dependence: "",
+  "emotional-deprivation": "",
+  "social-exclusion": "",
+  "defectiveness-shame": "",
+  failure: "",
+  subjugation: "",
+  "unrelenting-standards": "",
+  entitlement: "",
+})
