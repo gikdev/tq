@@ -1,8 +1,8 @@
 import { Inject, Injectable } from "@nestjs/common"
 import { DRIZZLE } from "src/drizzle/drizzle.module"
 import { answers } from "src/drizzle/schema"
-import { DrizzleDb } from "src/drizzle/types"
-import { CreateAnswerDto } from "./answers.dto"
+import type { DrizzleDb } from "src/drizzle/types"
+import type { CreateAnswerDto } from "./answers.dto"
 
 @Injectable()
 export class AnswersService {

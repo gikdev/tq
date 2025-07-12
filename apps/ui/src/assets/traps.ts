@@ -286,21 +286,44 @@ export interface Questionnaire {
 }
 
 let questionnaires: Questionnaire[] = [
-  { id: "life-traps", to: "/", title: "تله‌های زندگی", questions: lifeTrapsQuestions },
+  {
+    id: "life-traps",
+    to: "/",
+    title: "تله‌های زندگی",
+    questions: lifeTrapsQuestions,
+  },
   { id: "abandonment", to: "/", title: "رها شدگی", questions: [] },
-  { id: "mistrust-abuse", to: "/", title: "بی اعتمادی/بد رفتاری", questions: [] },
+  {
+    id: "mistrust-abuse",
+    to: "/",
+    title: "بی اعتمادی/بد رفتاری",
+    questions: [],
+  },
   { id: "vulnerability", to: "/", title: "آسیب‌پذیری", questions: [] },
   { id: "dependence", to: "/", title: "وابستگی", questions: [] },
-  { id: "emotional-deprivation", to: "/", title: "محرومیت هیجانی", questions: [] },
+  {
+    id: "emotional-deprivation",
+    to: "/",
+    title: "محرومیت هیجانی",
+    questions: [],
+  },
   { id: "social-exclusion", to: "/", title: "طرد اجتماعی", questions: [] },
   { id: "defectiveness-shame", to: "/", title: "نقص/شرم", questions: [] },
   { id: "failure", to: "/", title: "شکست", questions: [] },
   { id: "subjugation", to: "/", title: "اطاعت", questions: [] },
-  { id: "unrelenting-standards", to: "/", title: "معیارهای سختگیرانه", questions: [] },
+  {
+    id: "unrelenting-standards",
+    to: "/",
+    title: "معیارهای سختگیرانه",
+    questions: [],
+  },
   { id: "entitlement", to: "/", title: "استحقاق", questions: [] },
 ]
 
-questionnaires = questionnaires.map(q => ({ ...q, to: routes.client_testById_home(q.id) }))
+questionnaires = questionnaires.map(q => ({
+  ...q,
+  to: routes.client_testById_home(q.id),
+}))
 
 export { questionnaires }
 

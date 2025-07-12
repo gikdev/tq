@@ -1,5 +1,5 @@
 import styled from "@master/styled.react"
-import { CheckCircleIcon } from "@phosphor-icons/react"
+import { CheckCircleIcon, CircleDashedIcon } from "@phosphor-icons/react"
 
 interface AnswerItemProps<TValue = string> {
   answerText: string
@@ -33,7 +33,7 @@ export default function AnswerItem<TValue = string>({
         onChange={() => setCurrentValue(currentQIdx, answerCode)}
       />
       <span className="me-auto">{answerText}</span>
-      {isActive && <CheckCircleIcon size={24} />}
+      {isActive ? <CheckCircleIcon size={24} /> : <CircleDashedIcon size={24} />}
     </StyledItem>
   )
 }

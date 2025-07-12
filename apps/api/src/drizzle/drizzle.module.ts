@@ -1,9 +1,9 @@
-import { Module, Provider } from "@nestjs/common"
+import { Module, type Provider } from "@nestjs/common"
 import { ConfigService } from "@nestjs/config"
-import { NodePgDatabase, drizzle } from "drizzle-orm/node-postgres"
+import { drizzle, NodePgDatabase } from "drizzle-orm/node-postgres"
 import { Pool } from "pg"
 import * as schema from "./schema"
-import { DrizzleDb } from "./types"
+import type { DrizzleDb } from "./types"
 
 export const DRIZZLE = Symbol("drizzle-connection")
 

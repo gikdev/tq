@@ -3,9 +3,9 @@ import { useAtom } from "jotai"
 import { useCallback, useState } from "react"
 import { Link, useParams } from "react-router"
 import {
+  answersAtom,
   type PrecisionAnswer,
   type PrecisionAnswerCode,
-  answersAtom,
   questionnaires,
 } from "#/assets/traps"
 import { Btn } from "#/components/Btn"
@@ -18,7 +18,8 @@ import QuestionBox from "../_shared/QuestionBox"
 export default function TestByIdTest() {
   const testId = useParams().testId
   const selectedQuestionnaire = questionnaires.find(q => q.id === testId)
-  if (!testId || !selectedQuestionnaire) return <NotFoundAlert />
+  if (!testId) throw new Error("`testId` is falsy!")
+  if (!selectedQuestionnaire) throw new Error("`selectedQuestionnaire` is falsy!")
 
   const { questions } = selectedQuestionnaire
   const [answersObj, setAnswersObj] = useAtom(answersAtom)
@@ -40,15 +41,19 @@ export default function TestByIdTest() {
     (idx: number, newValue: PrecisionAnswer["code"]) => {
       const duplicate = [...answers]
       duplicate[idx] = newValue
-      setAnswersObj(p => ({ ...p, [selectedQuestionnaire.id]: duplicate.join(",") }))
+      setAnswersObj(p => ({
+        ...p,
+        [selectedQuestionnaire.id]: duplicate.join(","),
+      }))
     },
     [answers, selectedQuestionnaire.id],
   )
 
+  if (!testId || !selectedQuestionnaire) return <NotFoundAlert />
+
   return (
     <>
       <ContentContainer>
-        {/* @ts-ignore */}
         <QuestionBox questionNumber={currentQIdx + 1} questionText={currentQ.query}>
           {currentQ.answers.map(a => (
             <AnswerItem
